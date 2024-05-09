@@ -1,9 +1,9 @@
 # tradestore-frontend
 
-Installation
+# Installation
 git clone <repository-url>
 cd project-directory
 npm install
 
-Start application
+# Start application
 npm run dev
