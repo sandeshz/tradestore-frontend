@@ -1,6 +1,5 @@
-import { Container, Grid, TextField, Button, Card, Box } from "@mui/material";
+import { TextField, Button, Card, Box } from "@mui/material";
 import React, { useState } from 'react';
-import { useParams } from "react-router-dom";
 import axios from 'axios';
 
 const TradeStore = () => {
@@ -16,7 +15,7 @@ const TradeStore = () => {
     } catch (error) {
       throw error;
     }
-    setSearchTerm(term);
+    setSearchTerm('');
   };
 
   const fectchByTradeId = async (tradeId) => {
