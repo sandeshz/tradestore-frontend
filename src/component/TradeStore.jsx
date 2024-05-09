@@ -24,7 +24,6 @@ const TradeStore = () => {
           method: 'GET'
         }
       );
-      console.log('resp : ' + response.data);
       return response.data;
     } catch (error) {
       console.error('Error fetching Trade Id', error);
@@ -73,6 +72,7 @@ const TradeStore = () => {
           <p>Book ID : {searchResult.bookId}</p>
           <p>Maturity Date : {searchResult.maturityDate}</p>
           <p>Created Date : {searchResult.createdDate}</p>
+          <p>Expired : {searchResult.expired}</p>
         </Card>
       )}
 </div>

@@ -1,4 +1,4 @@
-import { Container, Grid, TextField, Button, Card, Box } from "@mui/material";
+import { Button, Box, Table, TableHead, TableBody, TableRow, TableCell } from "@mui/material";
 import axios from 'axios';
 import React, { useState } from 'react';
 
@@ -40,15 +40,33 @@ import React, { useState } from 'react';
           </Box>
         </div>
         <div>
-        <ul>
-          {trades.map((trade, index) => (
-            <li key={index}>
-              {/* Render trade details here */}
-              Trade ID: {trade.tradeId}, Counterparty: {trade.version}, Amount: {trade.counterPartyId}
-            </li>
-          ))}
-        </ul>
-      </div>
+        <Table>
+          <TableHead>
+            <TableRow>
+              <TableCell>Trade ID</TableCell>
+              <TableCell>Version</TableCell>
+              <TableCell>Counter Party ID</TableCell>
+              <TableCell>Book ID</TableCell>
+              <TableCell>Maturity Date</TableCell>
+              <TableCell>Created Date</TableCell>
+              <TableCell>Expired</TableCell>
+            </TableRow>
+          </TableHead>
+          <TableBody>
+            {trades.map((trade, index) => (
+              <TableRow key={index}>
+                <TableCell>{trade.tradeId}</TableCell>
+                <TableCell>{trade.version}</TableCell>
+                <TableCell>{trade.counterPartyId}</TableCell>
+                <TableCell>{trade.bookId}</TableCell>
+                <TableCell>{trade.maturityDate}</TableCell>
+                <TableCell>{trade.createdDate}</TableCell>
+                <TableCell>{trade.expired}</TableCell>\
+              </TableRow>
+            ))}
+          </TableBody>
+        </Table>      
+        </div>
       </div>
     )
   }
