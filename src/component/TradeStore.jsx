@@ -1,5 +1,6 @@
 import { Container, Grid, TextField, Button, Card, Box } from "@mui/material";
 import React, { useState } from 'react';
+import { useParams } from "react-router-dom";
 import axios from 'axios';
 
 const TradeStore = () => {
@@ -10,7 +11,7 @@ const TradeStore = () => {
     event.preventDefault();
     const term = searchTerm.trim();
     try {
-      const result = await fectchByTradeId();
+      const result = await fectchByTradeId(term);
       setSearchResult(result);
     } catch (error) {
       throw error;
@@ -18,11 +19,14 @@ const TradeStore = () => {
     setSearchTerm(term);
   };
 
-  const fectchByTradeId = async () => {
+  const fectchByTradeId = async (tradeId) => {
     try {
-      const response = await axios.get("http://localhost:8080/api/trades/${tradeId}");
+      const response = await axios.get(`http://localhost:8080/api/trades/${tradeId}`, {
+          method: 'GET'
+        }
+      );
       console.log('resp : ' + response.data);
-      return response.data;      
+      return response.data;
     } catch (error) {
       console.error('Error fetching Trade Id', error);
       throw error;
@@ -64,8 +68,12 @@ const TradeStore = () => {
   </div>
   {searchResult && (
         <Card variant={"outlined"} style={{ width: 400, padding: 20, marginTop: 30 }}>
-          <p>Trade ID: {searchResult.tradeId}</p>
-          {/* Display other trade data */}
+          <p>Trade ID : {searchResult.tradeId}</p>
+          <p>Version : {searchResult.version}</p>
+          <p>Counter Party ID : {searchResult.counterPartyId}</p>
+          <p>Book ID : {searchResult.bookId}</p>
+          <p>Maturity Date : {searchResult.maturityDate}</p>
+          <p>Created Date : {searchResult.createdDate}</p>
         </Card>
       )}
 </div>
