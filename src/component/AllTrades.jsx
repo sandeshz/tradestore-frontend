@@ -8,7 +8,8 @@ import React, { useState } from 'react';
     const handleDisplayAllTrades = async (event) => {
       event.preventDefault();
       try {
-        const response = await axios.get("http://localhost:8080/api/trades");
+        const response = await axios.get("http://localhost:8081/api/trades/all");
+        console.log(response.data);
         setTrades(response.data);
       } catch (error) {
         console.error('Error fetching trades', error);
@@ -61,7 +62,7 @@ import React, { useState } from 'react';
                 <TableCell>{trade.bookId}</TableCell>
                 <TableCell>{trade.maturityDate}</TableCell>
                 <TableCell>{trade.createdDate}</TableCell>
-                <TableCell>{trade.expired}</TableCell>\
+                <TableCell>{trade.expired}</TableCell>
               </TableRow>
             ))}
           </TableBody>

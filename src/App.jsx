@@ -17,11 +17,22 @@ function App() {
     setShowAllTrades(true);
   };
 
+  const handleCreateTradesClick = () => {
+    setShowTradeStore(false);
+    setShowAllTrades(true);
+  };
+
   return (
     <div>
-      <button onClick={handleTradeSearchClick}>Search Trade</button>
-      <button onClick={handleShowAllTradesClick}>Display All Trades</button>
-
+      <div style={{ marginBottom: '10px' }}>
+        <button onClick={handleTradeSearchClick}>Search Trade by Id</button>
+      </div>
+      <div style={{ marginBottom: '10px' }}>
+        <button onClick={handleShowAllTradesClick}>Display All Trades</button>
+      </div>
+      <div style={{ marginBottom: '10px' }}>
+        <button onClick={handleCreateTradesClick}>Create Trade</button>
+      </div>
       {showTradeStore && <TradeStore />}
       {showAllTrades && <AllTrades />}
     </div>

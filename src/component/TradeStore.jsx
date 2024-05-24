@@ -20,10 +20,11 @@ const TradeStore = () => {
 
   const fectchByTradeId = async (tradeId) => {
     try {
-      const response = await axios.get(`http://localhost:8080/api/trades/${tradeId}`, {
+      const response = await axios.get(`http://localhost:8081/api/trades/${tradeId}`, {
           method: 'GET'
         }
       );
+      console.log(response.data);
       return response.data;
     } catch (error) {
       console.error('Error fetching Trade Id', error);
